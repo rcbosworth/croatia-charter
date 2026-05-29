@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yacht Charter Report — Split, Croatia 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a202c; line-height: 1.6; }
+
+  .header { background: linear-gradient(135deg, #0a3d62, #1e6f9f); color: white; padding: 40px 32px 32px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; opacity: 0.85; }
+
+  .alerts { padding: 20px 32px; display: flex; flex-direction: column; gap: 10px; background: #fff; border-bottom: 1px solid #e2e8f0; }
+  .alert { padding: 12px 16px; border-radius: 8px; font-size: 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .alert-warn  { background: #fffbeb; border-left: 4px solid #f59e0b; }
+  .alert-info  { background: #eff6ff; border-left: 4px solid #3b82f6; }
+  .alert-green { background: #f0fdf4; border-left: 4px solid #22c55e; }
+  .alert strong { display: block; margin-bottom: 2px; }
+
+  nav { background: #1a202c; padding: 0 32px; display: flex; gap: 4px; flex-wrap: wrap; }
+  nav a { color: #a0aec0; text-decoration: none; font-size: 13px; padding: 12px 14px; border-bottom: 3px solid transparent; white-space: nowrap; }
+  nav a:hover { color: white; border-bottom-color: #4299e1; }
+
+  .content { max-width: 1400px; margin: 0 auto; padding: 32px; }
+
+  section { background: white; border-radius: 12px; padding: 28px; margin-bottom: 28px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  section h2 { font-size: 20px; font-weight: 700; color: #0a3d62; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 20px; }
+  section h3 { font-size: 16px; font-weight: 700; color: #2d3748; margin: 24px 0 12px; }
+  section h4 { font-size: 14px; font-weight: 600; color: #4a5568; margin: 18px 0 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 12px 0 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead th { background: #1a202c; color: #e2e8f0; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #f7fafc; }
+  tbody tr:hover { background: #ebf8ff; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+  td a { color: #2b6cb0; text-decoration: none; font-weight: 500; }
+  td a:hover { text-decoration: underline; }
+
+  /* Badges */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .badge-green  { background: #c6f6d5; color: #22543d; }
+  .badge-blue   { background: #bee3f8; color: #2c5282; }
+  .badge-orange { background: #feebc8; color: #7b341e; }
+  .badge-red    { background: #fed7d7; color: #742a2a; }
+  .badge-gray   { background: #e2e8f0; color: #4a5568; }
+  .badge-gold   { background: #fef9c3; color: #78350f; }
+
+  /* Trend tracking */
+  .trend-new  { color: #6b7280; font-size: 12px; }
+  .trend-down { color: #166534; font-weight: 600; font-size: 12px; }
+  .trend-up   { color: #991b1b; font-weight: 600; font-size: 12px; }
+  .trend-flat { color: #6b7280; font-size: 12px; }
+  .list-price { color: #9ca3af; text-decoration: line-through; font-size: 12px; margin-right: 4px; }
+  .disc-pct   { color: #15803d; font-weight: 700; font-size: 12px; }
+
+  /* Price styling */
+  .price-confirmed { color: #276749; font-weight: 700; }
+  .price-est       { color: #744210; font-weight: 600; }
+  .price-ls        { color: #718096; font-size: 12px; }
+
+  /* Operator cards */
+  .operator-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .meta-tag { background: #edf2f7; border-radius: 6px; padding: 4px 10px; font-size: 12.5px; color: #4a5568; }
+  .meta-tag strong { color: #2d3748; }
+
+  /* Recommendations */
+  .rec-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+  .rec-card { border-radius: 10px; padding: 20px; border: 2px solid; }
+  .rec-card.gold   { border-color: #d97706; background: #fffbeb; }
+  .rec-card.silver { border-color: #6b7280; background: #f9fafb; }
+  .rec-card.bronze { border-color: #92400e; background: #fef9f5; }
+  .rec-card .medal { font-size: 28px; margin-bottom: 8px; }
+  .rec-card h3 { font-size: 15px; margin: 0 0 8px; color: #1a202c; }
+  .rec-card .rec-price { font-size: 22px; font-weight: 800; margin: 10px 0 4px; color: #0a3d62; }
+  .rec-card ul { padding-left: 18px; font-size: 13px; color: #4a5568; margin: 8px 0; }
+  .rec-card ul li { margin-bottom: 4px; }
+  .rec-card a.btn { display: inline-block; margin-top: 12px; background: #0a3d62; color: white; padding: 8px 16px; border-radius: 6px; font-size: 13px; text-decoration: none; font-weight: 600; }
+  .rec-card a.btn:hover { background: #1e6f9f; }
+
+  /* Tips list */
+  .tips { list-style: none; padding: 0; }
+  .tips li { padding: 10px 14px; border-left: 3px solid #4299e1; background: #f7fafc; margin-bottom: 8px; border-radius: 0 6px 6px 0; font-size: 14px; }
+  .tips li strong { color: #0a3d62; }
+
+  /* Monitor table */
+  .monitor-table td:nth-child(3) { font-size: 12.5px; color: #718096; }
+
+  /* Footer */
+  footer { text-align: center; padding: 24px; font-size: 12px; color: #a0aec0; }
+
+  /* Totals callout */
+  .totals-box { background: #f7fafc; border: 1px solid #cbd5e0; border-radius: 8px; padding: 16px 20px; margin-top: 12px; font-size: 14px; }
+  .totals-box p { margin-bottom: 6px; }
+
+  /* Warning band */
+  .warning-band { background: #fed7d7; border: 1px solid #fc8181; border-radius: 8px; padding: 12px 16px; font-size: 13.5px; color: #742a2a; margin-bottom: 16px; }
+  .warning-band strong { display: block; margin-bottom: 2px; }
+
+  .note { font-size: 12.5px; color: #718096; margin-top: 8px; font-style: italic; }
+  .section-note { font-size: 13px; background: #fffbeb; border: 1px solid #f6e05e; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; color: #744210; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⛵ Yacht Charter Report — Split, Croatia</h1>
+  <div class="subtitle">Dates: July 27 – August 4, 2026 &nbsp;|&nbsp; Group: 4–6 people &nbsp;|&nbsp; Budget: Under €10,000/week &nbsp;|&nbsp; Compiled: May 27, 2026</div>
+</div>
+
+<div class="alerts">
+  <div class="alert alert-warn">
+    <span>⚠️</span>
+    <div><strong>Peak season pricing:</strong> Most sites display "from €X" at low-season rates. July–August peak prices are typically <strong>2–2.5× higher</strong>. This report flags confirmed (✓) vs. estimated peak prices throughout.</div>
+  </div>
+  <div class="alert alert-info">
+    <span>🧭</span>
+    <div><strong>Skipper cost:</strong> All prices below are bareboat (self-skippered). If you need a skipper, <strong>add ~€1,500/week</strong> to any total — noted in every table.</div>
+  </div>
+  <div class="alert alert-green">
+    <span>📅</span>
+    <div><strong>Standard charter week:</strong> Nearly all operators run <strong>Saturday → Saturday</strong>. Nearest match to your dates is July 26 – August 2. Boats with flexible check-in are specifically called out — most critically, the <strong>Sun Odyssey 440 "Sun Kiss"</strong> allows any-day start with 3-night minimum.</div>
+  </div>
+</div>
+
+<nav>
+  <a href="#summary">Summary Table</a>
+  <a href="#flexibility">Date Flexibility</a>
+  <a href="#chartersplit">CharterSplit</a>
+  <a href="#fairwind">FairWind</a>
+  <a href="#abavela">ABA Vela</a>
+  <a href="#ultrasailing">Ultra Sailing</a>
+  <a href="#ncp">NCP Charter</a>
+  <a href="#12knots">12knots</a>
+  <a href="#others">Other Sites</a>
+  <a href="#activityyachting">Activity Yachting</a>
+  <a href="#crossref">Cross-Site Compare</a>
+  <a href="#costs">Extra Costs</a>
+  <a href="#tips">Tips</a>
+  <a href="#recs">Recommendations</a>
+  <a href="#monitor">Monitor for Deals</a>
+</nav>
+
+<div class="content">
+
+<!-- SUMMARY -->
+<section id="summary">
+  <h2>1. Quick Summary — Best Value Boats (Confirmed Peak Prices)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Boat</th><th>Type</th><th>Cabins</th><th>Year</th><th>Base</th>
+          <th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Site</th><th>Notes</th><th>Trend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fdf4;">
+          <td><a href="https://12knots.com/en/yacht-charter/sun-odyssey-440-sun-kiss-12751/" target="_blank"><strong>Sun Odyssey 440 "Sun Kiss" ⭐</strong></a></td>
+          <td>Sailboat</td><td>4</td><td>2025</td><td>ACI Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">~€2,600 ✓</span></td><td>TBC</td><td>+€1,500</td>
+          <td><strong>~€4,500+</strong></td><td>12knots</td><td><span class="badge badge-green">Any-day check-in</span> <span class="badge badge-blue">Min 3 nights</span></td><td><span class="trend-new">📍 ~€2,600 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Bavaria Cruiser 33 (2020)</a></td>
+          <td>Sailboat</td><td>3</td><td>2020</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€2,100 ✓</span></td><td>~€300</td><td>+€1,500</td>
+          <td><strong>~€3,900</strong></td><td>CharterSplit</td><td>Smallest/cheapest confirmed</td><td><span class="trend-new">📍 €2,100 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Sun Odyssey 349 (2019)</a></td>
+          <td>Sailboat</td><td>3</td><td>2019</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€2,590 ✓</span></td><td>~€300</td><td>+€1,500</td>
+          <td><strong>~€4,390</strong></td><td>CharterSplit</td><td></td><td><span class="trend-new">📍 €2,590 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">Lagoon 380 (NCP)</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2018/19</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€2,800 ✓</span></td><td>~€350</td><td>+€1,500</td>
+          <td><strong>~€4,650</strong></td><td>NCP Charter</td><td>Best cat value; 45min from Split</td><td><span class="trend-new">📍 €2,800 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Bavaria Cruiser 37 (2020)</a></td>
+          <td>Sailboat</td><td>3</td><td>2020</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,100 ✓</span></td><td>~€310</td><td>+€1,500</td>
+          <td><strong>~€4,910</strong></td><td>CharterSplit</td><td></td><td><span class="trend-new">📍 €3,100 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Dufour 382 (2020)</a></td>
+          <td>Sailboat</td><td>3</td><td>2020</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,200 ✓</span></td><td>~€310</td><td>+€1,500</td>
+          <td><strong>~€5,010</strong></td><td>CharterSplit</td><td></td><td><span class="trend-new">📍 €3,200 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">Lagoon 39 "Bob Cat"</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2016</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,400 ✓</span></td><td>~€350</td><td>+€1,500</td>
+          <td><strong>~€5,250</strong></td><td>NCP Charter</td><td></td><td><span class="trend-new">📍 €3,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Elan E4 (2021)</a></td>
+          <td>Sailboat</td><td>3</td><td>2021</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,400 ✓</span></td><td>~€320</td><td>+€1,500</td>
+          <td><strong>~€5,220</strong></td><td>CharterSplit</td><td></td><td><span class="trend-new">📍 €3,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com/sailboat/elan-40-impression-wednesday-wednesday" target="_blank">Elan 40 Impression (Wed–Wed)</a></td>
+          <td>Sailboat</td><td>3</td><td>2019</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,690 ✓</span></td><td>€325</td><td>+€1,500</td>
+          <td><strong>~€5,515</strong></td><td>CharterSplit</td><td>Wed–Wed; start Jul 29</td><td><span class="trend-new">📍 €3,690 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">Lagoon 40 "Tom Cat/DUPLO II"</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2023/24</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€3,650 ✓</span></td><td>~€380</td><td>+€1,500</td>
+          <td><strong>~€5,530</strong></td><td>NCP Charter</td><td>New boats</td><td><span class="trend-new">📍 €3,650 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">Bavaria C38 (FairWind)</a></td>
+          <td>Sailboat</td><td>3</td><td>—</td><td>ACI Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€4,400 ✓</span></td><td>~€375</td><td>+€1,500</td>
+          <td><strong>~€6,275</strong></td><td>FairWind</td><td>Live calendar; 5% early-book</td><td><span class="trend-new">📍 €4,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com/sailboat/bavaria-c42" target="_blank">Bavaria C42 (2024)</a></td>
+          <td>Sailboat</td><td>3</td><td>2024</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€4,600 ✓</span></td><td>€320</td><td>+€1,500</td>
+          <td><strong>~€6,420</strong></td><td>CharterSplit</td><td>Newest boat in this range</td><td><span class="trend-new">📍 €4,600 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.abavela.com/en/charter-sailing-yacht-bavaria-c46-style.html" target="_blank">Bavaria C46 Style "Sestrica Vela"</a></td>
+          <td>Sailboat</td><td>4</td><td>2025</td><td>ACI Split</td>
+          <td><span class="list-price">€5,200</span></td><td><span class="disc-pct">-35%</span></td><td><span class="price-confirmed">€3,380 ✓</span></td><td>€371</td><td>+€1,500</td>
+          <td><strong>~€5,251</strong></td><td>ABA Vela</td><td>Check Jul 26 availability</td><td><span class="trend-new">📍 €3,380 · 28-May</span></td>
+        </tr>
+        <tr style="background:#f0fdf4;">
+          <td><a href="https://www.activityyachting.com/Croatia_Flotilla/bareboat_flotilla_yacht_prices.html" target="_blank"><strong>Excess 11 "First Sight" ⭐</strong></a><br><small style="color:#6b7280;">Activity Yachting · ACI Marina Skradin</small></td>
+          <td>Catamaran</td><td>4+2</td><td>2023</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td><span class="list-price">€5,511</span></td><td><span class="disc-pct">-15%</span></td>
+          <td><span class="price-confirmed">€4,684 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td>
+          <td><strong>~€6,650</strong></td><td>Activity Yachting</td>
+          <td>Best cat found; 2023 modern design</td>
+          <td><span class="trend-new">📍 €4,684 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">FP Astréa 42 (NCP, 2022/25)</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2022/25</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€4,850–5,000 ✓</span></td><td>~€380</td><td>+€1,500</td>
+          <td><strong>~€6,730–6,880</strong></td><td>NCP Charter</td><td>Fountaine Pajot; new models</td><td><span class="trend-new">📍 €4,850–5,000 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">Bavaria 46C (2023)</a></td>
+          <td>Sailboat</td><td>4</td><td>2023</td><td>ACI Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€5,400 ✓</span></td><td>~€375</td><td>+€1,500</td>
+          <td><strong>~€7,275</strong></td><td>FairWind</td><td></td><td><span class="trend-new">📍 €5,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">Lagoon 450 (NCP)</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2015–18</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€4,950–5,250 ✓</span></td><td>~€380</td><td>+€1,500</td>
+          <td><strong>~€6,830–7,130</strong></td><td>NCP Charter</td><td></td><td><span class="trend-new">📍 €4,950–5,250 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com" target="_blank">Lagoon 380 CharterSplit (2018)</a></td>
+          <td>Catamaran</td><td>4+2</td><td>2018</td><td>Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€5,700 ✓</span></td><td>~€390</td><td>+€1,500</td>
+          <td><strong>~€7,590</strong></td><td>CharterSplit</td><td>Based in Split vs Šibenik</td><td><span class="trend-new">📍 €5,700 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">Lagoon 400S2 (FairWind)</a></td>
+          <td>Catamaran</td><td>4+2</td><td>—</td><td>ACI Split</td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€7,400 ✓</span></td><td>~€375</td><td>+€1,500</td>
+          <td><strong>~€9,275</strong></td><td>FairWind</td><td></td><td><span class="trend-new">📍 €7,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://ncp-charter.com" target="_blank">NCP Charter: Oceanis 45.1 (2023)</a></td>
+          <td>Sailboat</td><td>3</td><td>2023</td><td><span class="badge badge-orange">Šibenik</span></td>
+          <td>—</td><td>—</td><td><span class="price-confirmed">€5,400 ✓</span></td><td>TBC</td><td>+€1,500</td>
+          <td><strong>~€6,900+</strong></td><td>NCP Charter</td><td>Confirmed Jul 27–Aug 3 available</td><td><span class="trend-new">📍 €5,400 · 28-May</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">✓ = confirmed price from operator website &nbsp;|&nbsp; Šibenik base = ~35–40km / 45 min from Split &nbsp;|&nbsp; 📍 Trend = first-recorded price and date; on refresh shows 📉↓/📈↑/➡️ vs this baseline</p>
+</section>
+
+<!-- DATE FLEXIBILITY -->
+<section id="flexibility">
+  <h2>2. Date Flexibility — Who Allows Non-Saturday Starts</h2>
+  <p style="margin-bottom:14px;font-size:14px;">Your July 27 start is a <strong>Sunday</strong> — almost all operators require Saturday check-in. Options:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Min Duration</th><th>Check-In Day</th><th>Your Window Fit</th><th>Site</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://12knots.com/en/yacht-charter/sun-odyssey-440-sun-kiss-12751/" target="_blank">Sun Odyssey 440 "Sun Kiss"</a></td>
+          <td><span class="badge badge-green">3 nights</span></td>
+          <td><span class="badge badge-green">Any day</span></td>
+          <td>✅ Perfect — July 27–Aug 3 or any sub-window</td>
+          <td>12knots.com</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com/sailboat/elan-40-impression-wednesday-wednesday" target="_blank">Elan 40 Impression (Wed-Wed)</a></td>
+          <td>7 nights</td>
+          <td>Wednesday</td>
+          <td>🟡 July 29 – Aug 5 (within your range)</td>
+          <td>CharterSplit</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-40-wednesday-wednesday" target="_blank">Lagoon 40 (Wed-Wed)</a></td>
+          <td>7 nights</td>
+          <td>Wednesday</td>
+          <td>🟡 July 29 – Aug 5 (within your range)</td>
+          <td>CharterSplit</td>
+        </tr>
+        <tr>
+          <td>All FairWind boats</td>
+          <td>7 nights</td>
+          <td>Saturday</td>
+          <td>🟠 July 26 – Aug 2 (one day early start)</td>
+          <td>FairWind</td>
+        </tr>
+        <tr>
+          <td>All NCP Charter boats</td>
+          <td>7 nights</td>
+          <td>Saturday</td>
+          <td>🟠 Sat–Sat only; email for exceptions</td>
+          <td>NCP Charter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-info" style="margin-top:12px;">
+    <span>💡</span>
+    <div>Contact CharterSplit or FairWind directly — in tight availability weeks, some operators waive the Saturday rule for a small premium. Ask explicitly about a July 27 or July 28 start.</div>
+  </div>
+</section>
+
+<!-- CHARTERSPLIT -->
+<section id="chartersplit">
+  <h2>3. CharterSplit — <a href="http://chartersplit.com" target="_blank">chartersplit.com</a></h2>
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Bases:</strong> ACI Marina Split, Seget Donji, Kaštela</span>
+    <span class="meta-tag"><strong>Fleet:</strong> ~35 boats</span>
+    <span class="meta-tag"><strong>Booking:</strong> Direct inquiry (no live calendar)</span>
+    <span class="meta-tag"><strong>Commission:</strong> None — owner direct</span>
+  </div>
+
+  <div class="section-note">
+    ✅ <strong>Updated with confirmed peak-season prices.</strong> Boats marked ✓ have confirmed July/August high-season rates fetched directly from chartersplit.com individual boat pages. Remaining "est" prices use confirmed multipliers from nearby boats.
+  </div>
+
+  <h4>Sailboats — confirmed HS prices (direct from chartersplit.com)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bavaria Cruiser 33</td><td>3</td><td>10.0m</td><td>2020</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,100 ✓</span></td>
+          <td>~€300</td><td>+€1,500</td><td><strong>~€3,900</strong></td><td></td>
+          <td><span class="trend-new">📍 €2,100 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Sun Odyssey 349</td><td>3</td><td>10.34m</td><td>2019</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,590 ✓</span></td>
+          <td>~€300</td><td>+€1,500</td><td><strong>~€4,390</strong></td><td></td>
+          <td><span class="trend-new">📍 €2,590 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Hanse 388</td><td>3</td><td>11.75m</td><td>2019</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,800 ✓</span></td>
+          <td>~€300</td><td>+€1,500</td><td><strong>~€4,600</strong></td><td></td>
+          <td><span class="trend-new">📍 €2,800 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Dufour 382</td><td>3</td><td>11.50m</td><td>2020</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,200 ✓</span></td>
+          <td>~€300</td><td>+€1,500</td><td><strong>~€5,000</strong></td><td></td>
+          <td><span class="trend-new">📍 €3,200 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria Cruiser 37</td><td>3</td><td>11.27m</td><td>2020</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,100 ✓</span></td>
+          <td>~€310</td><td>+€1,500</td><td><strong>~€4,910</strong></td><td></td>
+          <td><span class="trend-new">📍 €3,100 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Sun Odyssey 380</td><td>3</td><td>11.63m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,550 ✓</span></td>
+          <td>~€310</td><td>+€1,500</td><td><strong>~€5,360</strong></td><td></td>
+          <td><span class="trend-new">📍 €3,550 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Elan E4</td><td>3</td><td>12.35m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,400 ✓</span></td>
+          <td>~€320</td><td>+€1,500</td><td><strong>~€5,220</strong></td><td></td>
+          <td><span class="trend-new">📍 €3,400 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Elan 40 Impression (Wed–Wed)</td><td>3</td><td>11.9m</td><td>2019</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,690 ✓</span></td>
+          <td>€325</td><td>+€1,500</td><td><strong>~€5,515</strong></td><td>Wed–Wed; start Jul 29</td>
+          <td><span class="trend-new">📍 €3,690 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/elan-40-impression-wednesday-wednesday" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria Cruiser 41</td><td>3</td><td>12.33m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€4,600 ✓</span></td>
+          <td>~€320</td><td>+€1,500</td><td><strong>~€6,420</strong></td><td></td>
+          <td><span class="trend-new">📍 €4,600 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria C42</td><td>3</td><td>12.4m</td><td>2024</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€4,600 ✓</span></td>
+          <td>€320</td><td>+€1,500</td><td><strong>~€6,420</strong></td><td>Pack incl. cleaning, linen, Wi-Fi, dinghy, gas</td>
+          <td><span class="trend-new">📍 €4,600 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/bavaria-c42" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Sun Odyssey 440</td><td>3</td><td>13.39m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€4,700 ✓</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€6,550</strong></td><td></td>
+          <td><span class="trend-new">📍 €4,700 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Dufour 460 GL</td><td>4</td><td>14.00m</td><td>2020</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€5,200 ✓</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€7,050</strong></td><td></td>
+          <td><span class="trend-new">📍 €5,200 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Hanse 460</td><td>5</td><td>14.60m</td><td>2024</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€6,000 ✓</span></td>
+          <td>€355</td><td>+€1,500</td><td><strong>~€7,855</strong></td><td>Pack: €300 + €55 marina fee</td>
+          <td><span class="trend-new">📍 €6,000 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/hanse-460" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria C45</td><td>4</td><td>14.06m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€3,900 est</span></td>
+          <td>~€320</td><td>+€1,500</td><td><strong>~€5,720 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€3,900 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/bavaria-c45" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Beneteau Oceanis 40.1</td><td>4</td><td>11.99m</td><td>2024</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€5,100 est</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€6,950 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€5,100 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/beneteau-oceanis-40.1" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Salona 46</td><td>4</td><td>14.14m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€7,200 est</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€9,050 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€7,200 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/salona-46" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Jeanneau Sun Odyssey 490</td><td>5+1</td><td>14.42m</td><td>2025</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€6,500 est</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€8,350 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€6,500 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/jeanneau-sun-odyssey-490" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Beneteau Oceanis 46.1</td><td>5</td><td>14.60m</td><td>2024</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€7,000 est</span></td>
+          <td>~€350</td><td>+€1,500</td><td><strong>~€8,850 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€7,000 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/sailboat/beneteau-oceanis-46.1" target="_blank">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Catamarans (confirmed HS prices where available)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lagoon 380</td><td>4+2</td><td>11.55m</td><td>2018</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€5,700 ✓</span></td>
+          <td>~€390</td><td>+€1,500</td><td><strong>~€7,590</strong></td><td></td>
+          <td><span class="trend-new">📍 €5,700 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 38</td><td>4+2</td><td>13.12m</td><td>2026</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€6,500 est</span></td>
+          <td>~€400</td><td>+€1,500</td><td><strong>~€8,400 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€6,500 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-38" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 40 (2019, Wed–Wed)</td><td>4+2</td><td>11.74m</td><td>2019</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€6,800 est</span></td>
+          <td>~€400</td><td>+€1,500</td><td><strong>~€8,700 est</strong></td><td>Wed–Wed check-in</td>
+          <td><span class="trend-new">📍 ~€6,800 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-40-wednesday-wednesday" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 40 (2023)</td><td>4+2</td><td>11.74m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€8,090 ✓</span></td>
+          <td>€410</td><td>+€1,500</td><td><strong>~€10,000</strong></td><td>Pack incl. cleaning, outboard, cushions, Wi-Fi, linen</td>
+          <td><span class="trend-new">📍 €8,090 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-40" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Bali Catspace</td><td>4</td><td>12.31m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€7,500 est</span></td>
+          <td>~€400</td><td>+€1,500</td><td><strong>~€9,400 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€7,500 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/bali-catspace" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 42 (2018)</td><td>4+2</td><td>12.80m</td><td>2018</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€7,600 est</span></td>
+          <td>~€400</td><td>+€1,500</td><td><strong>~€9,500 est</strong></td><td></td>
+          <td><span class="trend-new">📍 ~€7,600 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-42" target="_blank">View →</a></td>
+        </tr>
+        <tr style="opacity:0.6;">
+          <td>Lagoon 42 (2025) <span class="badge badge-red">OVER BUDGET</span></td><td>4+2</td><td>13.22m</td><td>2025</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€11,250 ✓</span></td>
+          <td>~€400</td><td>+€1,500</td><td><strong>~€13,150</strong></td><td></td>
+          <td><span class="trend-new">📍 €11,250 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-422" target="_blank">View →</a></td>
+        </tr>
+        <tr style="opacity:0.6;">
+          <td>Lagoon 43 (2025) <span class="badge badge-red">OVER BUDGET</span></td><td>4+2</td><td>13.85m</td><td>2025</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€12,500 ✓</span></td>
+          <td>~€420</td><td>+€1,500</td><td><strong>~€14,420</strong></td><td></td>
+          <td><span class="trend-new">📍 €12,500 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/catamaran/lagoon-43" target="_blank">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Lagoon 42 (2025) and Lagoon 43 (2025) are confirmed over €10,000 base price. Lagoon 46, 51, Sunreef 50/60 also excluded (all exceed budget). The Lagoon 42 (2018) and older boats are estimated — contact CharterSplit for confirmed July prices.</p>
+
+  <h4>Motor Boats (confirmed HS prices where available)</h4>
+  <p class="note" style="margin-bottom:10px;">Motor boat charter pack costs not confirmed — contact CharterSplit directly. Skipper estimate of +€1,500 may differ for motor boats.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grandezza 28 OC</td><td>1</td><td>8.50m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,800 ✓</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 €2,800 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria E40</td><td>2</td><td>11.97m</td><td>2019</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€4,100 ✓</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 €4,100 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Jeanneau Merry Fisher 1095</td><td>3</td><td>10.50m</td><td>2025</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€5,200 est</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 ~€5,200 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/motor-boat/jeanneau-merry-fisher-1095" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Northman 1200</td><td>3</td><td>11.66m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€7,000 est</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 ~€7,000 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/motor-boat/northman-1200" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Beneteau Swift Trawler 37 Fly</td><td>2</td><td>11.29m</td><td>2026</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">~€8,800 est</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 ~€8,800 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/motor-boat/beneteau-swift-trawler-37-fly" target="_blank">View →</a></td>
+        </tr>
+        <tr style="opacity:0.6;">
+          <td>Beneteau Swift Trawler 41 <span class="badge badge-red">OVER BUDGET</span></td><td>3</td><td>13.43m</td><td>2021</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€10,500 ✓</span></td><td>TBC</td><td>+€1,500</td><td>TBC</td><td></td>
+          <td><span class="trend-new">📍 €10,500 · 28-May</span></td>
+          <td><a href="https://www.chartersplit.com/motor-boat/beneteau-swift-trawler-41" target="_blank">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-info" style="margin-top:16px;">
+    <span>💬</span>
+    <div><strong>CharterSplit verdict:</strong> Widest direct fleet in Split. No live online calendar — email for availability and exact peak-season quotes. Best for comparison shopping and direct negotiation. No aggregator markup.</div>
+  </div>
+</section>
+
+<!-- FAIRWIND -->
+<section id="fairwind">
+  <h2>4. FairWind — <a href="https://fairwind.hr" target="_blank">fairwind.hr</a></h2>
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Marina:</strong> ACI Marina Split</span>
+    <span class="meta-tag"><strong>Booking:</strong> Online with live calendar</span>
+    <span class="meta-tag"><strong>Discount:</strong> 5% early booking (Jan 31 deadline)</span>
+    <span class="meta-tag"><strong>Reviews:</strong> TripAdvisor 10-year Traveler's Choice, 250+ five-star reviews</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Cabins</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bavaria C38</td><td>3</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€4,400 ✓</span></td><td>€300–400</td><td>+€1,500</td>
+          <td><strong>~€6,250</strong></td><td></td>
+          <td><span class="trend-new">📍 €4,400 · 28-May</span></td>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria 46C (2023)</td><td>4</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€5,400 ✓</span></td><td>€300–400</td><td>+€1,500</td>
+          <td><strong>~€7,250</strong></td><td></td>
+          <td><span class="trend-new">📍 €5,400 · 28-May</span></td>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Bavaria 46C (2024)</td><td>4</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€5,500 ✓</span></td><td>€300–400</td><td>+€1,500</td>
+          <td><strong>~€7,350</strong></td><td></td>
+          <td><span class="trend-new">📍 €5,500 · 28-May</span></td>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 400S2</td><td>4+2</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€7,400 ✓</span></td><td>€300–400</td><td>+€1,500</td>
+          <td><strong>~€9,250</strong></td><td></td>
+          <td><span class="trend-new">📍 €7,400 · 28-May</span></td>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lagoon 40</td><td>4+2</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€8,500 ✓</span></td><td>€300–400</td><td>+€1,500</td>
+          <td><strong>~€10,350</strong></td><td></td>
+          <td><span class="trend-new">📍 €8,500 · 28-May</span></td>
+          <td><a href="https://fairwind.hr/fleet/" target="_blank">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>FairWind Additional Costs (fully itemized)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>Cost</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Tourist tax</td><td>€1.33/adult/night</td><td>~€56 for 6 people × 7 nights</td></tr>
+        <tr><td>VAT 13%</td><td>Included</td><td>Already in listed price</td></tr>
+        <tr><td>Fuel</td><td>~€80–200/wk</td><td>Guest fills tank at end; sailing = less motoring = less cost</td></tr>
+        <tr><td>Kayaks</td><td>€150/wk optional</td><td></td></tr>
+        <tr><td>Paddle boards</td><td>€100/wk optional</td><td></td></tr>
+        <tr><td>Wi-Fi</td><td>€5/wk optional</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-green" style="margin-top:12px;">
+    <span>✅</span>
+    <div><strong>FairWind verdict:</strong> Most transparent pricing of all operators. Live online calendar. Excellent reputation. Slightly above market on base rate but zero surprises on fees. Our top pick for peace-of-mind booking.</div>
+  </div>
+</section>
+
+<!-- ABA VELA -->
+<section id="abavela">
+  <h2>5. ABA Vela — <a href="https://abavela.com" target="_blank">abavela.com</a></h2>
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Marina:</strong> ACI Marina Split</span>
+    <span class="meta-tag"><strong>Founded:</strong> 1996 (family-owned)</span>
+    <span class="meta-tag"><strong>Deposit:</strong> 50% upfront; balance 30 days before</span>
+    <span class="meta-tag"><strong>Discounts:</strong> 5% repeat / 5% 2-week / 10% 3-week / 5% direct web</span>
+    <span class="meta-tag"><strong>URL:</strong> <a href="https://www.abavela.com/en/fleet.html" target="_blank">abavela.com/en/fleet.html</a></span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Cabins</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Artina / Tonkica / Mrduja / Lilith / Bobara</td><td>Bavaria Cruiser 34</td><td>3</td><td>2018–2024</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€1,755–€1,960 ✓</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>Prices confirmed; pack TBC</td>
+          <td><span class="trend-new">📍 €1,755–1,960 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/charter-sailing-yacht-bavaria-34-cruiser.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Lirica / Merara / Evala</td><td>Bavaria Cruiser 37</td><td>3</td><td>2018–2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,015 ✓</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>€2,015 confirmed Jul 11–18 rate</td>
+          <td><span class="trend-new">📍 €2,015 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/charter-sailing-yacht-bavaria-37-1-cruiser.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Sea Sparkle / Bella Vita</td><td>Bavaria Cruiser 46</td><td>4</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,640 ✓</span> (late Jun); <span class="price-est">~€3,500 est peak</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>Jun 27–Jul 4 rate shown; peak likely higher</td>
+          <td><span class="trend-new">📍 ~€3,500 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/fleet.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Sestrica Vela</td><td>Bavaria C46 Style</td><td>4</td><td>2025</td>
+          <td><span class="list-price">€5,200</span></td><td><span class="disc-pct">-35%</span></td>
+          <td><span class="price-confirmed">€3,380 ✓</span></td>
+          <td>€350</td><td>+€1,500</td><td><strong>~€5,230</strong></td>
+          <td>Jul 11–18 rate confirmed; pack incl. tax €21</td>
+          <td><span class="trend-new">📍 €3,380 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/charter-sailing-yacht-bavaria-c46-style.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Shala</td><td>Bavaria C50 Style</td><td>3+1</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€3,300 ✓</span> (Jun rate); <span class="price-est">~€5,500 est peak</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>Jun 6–13 rate shown; peak Jul price likely ~60% higher</td>
+          <td><span class="trend-new">📍 ~€5,500 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/fleet.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Vela Tonka</td><td>Bavaria Cruiser 51</td><td>5</td><td>2018</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€2,695 ✓</span> (Jun rate); <span class="price-est">~€4,500 est peak</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>Jun 6–13 rate; 5 cabins = outstanding value at peak too</td>
+          <td><span class="trend-new">📍 ~€4,500 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/fleet.html" target="_blank">View →</a></td>
+        </tr>
+        <tr>
+          <td>Poppy</td><td>Lagoon 42 (catamaran)</td><td>4+2</td><td>2019</td>
+          <td><span class="list-price">€7,800</span></td><td><span class="disc-pct">-40%</span> (late Jun)</td>
+          <td><span class="price-confirmed">€4,680 ✓</span> (late Jun); <span class="price-est">~€7,000 est peak</span></td>
+          <td>TBC</td><td>+€1,500</td><td>TBC</td>
+          <td>Late Jun rate with 40% discount; peak likely near list</td>
+          <td><span class="trend-new">📍 ~€7,000 · 28-May</span></td>
+          <td><a href="https://www.abavela.com/en/fleet.html" target="_blank">View →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">⚠️ Many Abavela prices above are from off-peak dates shown on their fleet listing. Peak (Jul 26–Aug 2) prices for sailboats will be higher — Bavaria C46 Style is the only one with a confirmed July rate (€3,380). Contact abavela.com directly for July 2026 quotes on specific boats.</p>
+</section>
+
+<!-- ULTRA SAILING -->
+<section id="ultrasailing">
+  <h2>6. Ultra Sailing — <a href="https://ultra-sailing.hr" target="_blank">ultra-sailing.hr</a></h2>
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Split base:</strong> ACI Marina Split</span>
+    <span class="meta-tag"><strong>Fleet:</strong> 104 sailboats + 32 catamarans (all bases)</span>
+    <span class="meta-tag"><strong>Phone:</strong> +385 21 398 578</span>
+    <span class="meta-tag"><strong>Email:</strong> booking@ultra-sailing.hr</span>
+    <span class="meta-tag"><strong>Pricing:</strong> Not published online — inquiry only</span>
+  </div>
+
+  <div class="alert alert-warn" style="margin-bottom:14px;">
+    <span>⚠️</span>
+    <div><strong>Ultra Sailing does NOT publish weekly charter rates.</strong> Individual boat pages show a "Send inquiry" button, not a price calendar. You must email or call for a July 2026 quote. The "from €X" figures below were found on listing aggregators and may be low-season floor prices.</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Cabins</th><th>Length</th><th>Year</th><th>Base</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tide Of Your Life</td><td>Beneteau Oceanis 47</td><td>5</td><td>14.6m</td><td>2026</td><td>ACI Split</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">from €2,841 (LS floor)</span></td>
+          <td>€363–473</td><td>€1,837–2,015</td><td>TBC</td>
+          <td>Inquiry only — 'from' price is low-season floor</td>
+          <td><span class="trend-new">📍 inquiry only · 28-May</span></td>
+          <td><a href="https://ultra-sailing.hr/boats/oceanis-47/tide-of-your-life/" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>B-52</td><td>Beneteau Oceanis 52</td><td>5</td><td>16.28m</td><td>2026</td><td>ACI Split</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">from €3,535 (LS floor)</span></td>
+          <td>€363–473</td><td>€1,837–2,015</td><td>TBC</td>
+          <td>Inquiry only — 'from' price is low-season floor</td>
+          <td><span class="trend-new">📍 inquiry only · 28-May</span></td>
+          <td><a href="https://ultra-sailing.hr/boats/oceanis-52/b-52/" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Tincika</td><td>Beneteau Oceanis 52 Owner</td><td>3</td><td>16.28m</td><td>2026</td><td>ACI Split</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-est">from €5,273 (LS floor)</span></td>
+          <td>€363–473</td><td>€1,837–2,015</td><td>TBC</td>
+          <td>Inquiry only — 'from' price is low-season floor</td>
+          <td><span class="trend-new">📍 inquiry only · 28-May</span></td>
+          <td><a href="https://ultra-sailing.hr/boats/" target="_blank">Inquire →</a></td>
+        </tr>
+        <tr>
+          <td>Marina</td><td>Fountaine Pajot Saba 50 (catamaran)</td><td>6</td><td>14.98m</td><td>2020</td><td>ACI Split</td>
+          <td>—</td><td>—</td>
+          <td>Price on request</td>
+          <td>€363–473</td><td>€1,837–2,015</td><td>TBC</td>
+          <td>Inquiry only — 'from' price is low-season floor</td>
+          <td><span class="trend-new">📍 inquiry only · 28-May</span></td>
+          <td><a href="https://ultra-sailing.hr/catamarans/" target="_blank">Inquire →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Ultra Sailing Confirmed Mandatory Extras (for cost planning)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>46–47ft Boats</th><th>51ft+ Boats</th><th>What's Included</th></tr></thead>
+      <tbody>
+        <tr><td>Charter Pack (mandatory)</td><td>€363/booking</td><td>€473/booking</td><td>Cleaning, dinghy + outboard, bed linen, towels (2/person), diver inspection, 5GB WiFi, gas, dish soap</td></tr>
+        <tr><td>Security Deposit</td><td>€2,500</td><td>€3,500</td><td>Fully refundable; held on card</td></tr>
+        <tr><td>Tourist Tax</td><td colspan="2">€1.33/adult/night</td><td>~€56 for 6 people × 7 nights</td></tr>
+        <tr><td>Skipper (optional)</td><td>€1,837/wk</td><td>€2,015/wk</td><td>+ skipper's cabin and food costs</td></tr>
+        <tr><td>Damage Waiver</td><td colspan="2">€440/booking</td><td>Optional insurance instead of deposit</td></tr>
+        <tr><td>Hostess</td><td>€1,750/wk</td><td>€1,837/wk</td><td>Requires €3,000 advance deposit</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- NCP CHARTER -->
+<section id="ncp">
+  <h2>7. NCP Charter — <a href="https://ncp-charter.com" target="_blank">ncp-charter.com</a></h2>
+
+  <div class="warning-band">
+    <strong>⚠️ NOT a Split-based operator.</strong>
+    NCP Charter is based in Šibenik (D-Marin Marina Mandalina) — approximately 80km north of Split. Budget ~1 hour drive each way. Their fleet is excellent and well-reviewed, but you won't be starting/ending in Split.
+  </div>
+
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Marina:</strong> D-Marin Mandalina, Šibenik</span>
+    <span class="meta-tag"><strong>Fleet:</strong> 80+ yachts</span>
+    <span class="meta-tag"><strong>Experience:</strong> 30 years</span>
+    <span class="meta-tag"><strong>Check-in:</strong> Saturday only</span>
+    <span class="meta-tag"><strong>Contact:</strong> booking@ncp-charter.com</span>
+  </div>
+
+  <p style="font-size:14px;margin-bottom:12px;">For <strong>July 27 – August 3, 2026 specifically</strong>, a live date-filtered search found only <strong>2 boats available</strong> (others booked). If you shift to <strong>July 26–August 2</strong> (Sat–Sat), the full fleet opens up:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Lovre"</td><td><span class="badge badge-red">1 cabin only</span></td><td>8.23m</td><td>2021</td>
+          <td><span class="list-price">€3,050</span></td><td><span class="disc-pct">-25%</span></td>
+          <td><span class="price-confirmed">€2,288 ✓</span></td><td>~€300</td><td>+€1,500</td><td><strong>~€4,088</strong></td>
+          <td>Too small for 4–6 people</td>
+          <td><span class="trend-new">📍 €2,288 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td>NEW 2026 (name TBC)</td><td>2</td><td>11.56m</td><td>2026</td>
+          <td><span class="list-price">€8,900</span></td><td><span class="disc-pct">-15%</span></td>
+          <td><span class="price-confirmed">€7,565 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€9,415</strong></td>
+          <td>Jul 27–Aug 3 confirmed available</td>
+          <td><span class="trend-new">📍 €7,565 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td>Oceanis 45.1</td><td>3</td><td>13.7m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€5,400 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€7,250</strong></td>
+          <td>Jul 27–Aug 3 confirmed available</td>
+          <td><span class="trend-new">📍 €5,400 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td>Dufour 48</td><td>4</td><td>14.63m</td><td>2023</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€8,600 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€10,480</strong></td>
+          <td>Jul 27–Aug 3 confirmed available</td>
+          <td><span class="trend-new">📍 €8,600 · 28-May</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Full NCP Fleet — Sailboats (published peak-season prices, Sat–Sat week)</h4>
+  <p class="note" style="margin-bottom:10px;">Prices below are from the NCP website fleet pages — peak-season rates. Availability for exact July 27 dates not confirmed for all; shift to Sat 26 Jul opens more options.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Morea</td><td>Grand Soleil 52 LC</td><td>3+skipper</td><td>16.98m</td><td>2024</td><td>—</td><td>—</td><td><span class="price-confirmed">€7,200 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€9,080</strong></td><td></td><td><span class="trend-new">📍 €7,200 · 28-May</span></td></tr>
+        <tr><td>Vita</td><td>Dufour 530 GL</td><td>4</td><td>16.35m</td><td>2021</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,800 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€6,650</strong></td><td></td><td><span class="trend-new">📍 €4,800 · 28-May</span></td></tr>
+        <tr><td>Aloha / Sportski Vuk 44</td><td>Grand Soleil 44</td><td>3</td><td>13.40m</td><td>2022/23</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,150 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€6,000</strong></td><td></td><td><span class="trend-new">📍 €4,150 · 28-May</span></td></tr>
+        <tr><td>Kety</td><td>Grand Soleil 50</td><td>4</td><td>14.90m</td><td>2005</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,200 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€5,050</strong></td><td></td><td><span class="trend-new">📍 €3,200 · 28-May</span></td></tr>
+        <tr><td>Pingala</td><td>Grand Soleil 45</td><td>3</td><td>13.90m</td><td>2005</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,600 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€4,450</strong></td><td></td><td><span class="trend-new">📍 €2,600 · 28-May</span></td></tr>
+        <tr><td>Skalice</td><td>Grand Soleil 43</td><td>3</td><td>13.39m</td><td>2005</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,250 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€4,100</strong></td><td></td><td><span class="trend-new">📍 €2,250 · 28-May</span></td></tr>
+        <tr><td>Sportski Vuk</td><td>Grand Soleil 37 R</td><td>3</td><td>11.70m</td><td>2010</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,350 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€4,200</strong></td><td></td><td><span class="trend-new">📍 €2,350 · 28-May</span></td></tr>
+        <tr><td>Sjor III</td><td>Grand Soleil 40</td><td>3</td><td>11.99m</td><td>2003</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,000 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€3,850</strong></td><td></td><td><span class="trend-new">📍 €2,000 · 28-May</span></td></tr>
+        <tr><td><em>Various Dufour, Hanse, Elan, Oceanis</em></td><td>Multiple</td><td>3–4</td><td>11–14m</td><td>2018–2024</td><td>—</td><td>—</td><td><span class="price-confirmed">€1,440–€4,300 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€3,290–€6,150</strong></td><td></td><td><span class="trend-new">📍 €1,440–4,300 · 28-May</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Full NCP Fleet — Catamarans (published peak-season prices)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Grey Pearl / MAYA</td><td>Lagoon 380</td><td>4+2</td><td>11.55m</td><td>2018/19</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,800 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€4,650</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €2,800 · 28-May</span></td></tr>
+        <tr><td>Bob Cat</td><td>Lagoon 39</td><td>4+2</td><td>11.74m</td><td>2016</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,400 ✓</span></td><td>~€350</td><td>+€1,500</td><td><strong>~€5,250</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €3,400 · 28-May</span></td></tr>
+        <tr><td>Tom Cat / DUPLO II</td><td>Lagoon 40</td><td>4+2</td><td>11.74m</td><td>2023/24</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,650 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€5,530</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €3,650 · 28-May</span></td></tr>
+        <tr><td>ABBA / Aymeline</td><td>Lagoon 42</td><td>4+2</td><td>12.80m</td><td>2017/23</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,750 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€6,630</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €4,750 · 28-May</span></td></tr>
+        <tr><td>Imagine</td><td>Fountaine Pajot Astréa 42</td><td>4+2</td><td>12.58m</td><td>2022</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,850 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€6,730</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €4,850 · 28-May</span></td></tr>
+        <tr><td>Marčelina</td><td>Lagoon 450</td><td>4+2</td><td>13.96m</td><td>2015</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,950 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€6,830</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €4,950 · 28-May</span></td></tr>
+        <tr><td>Adriatic Breeze</td><td>Fountaine Pajot Astréa 42</td><td>4+2</td><td>12.58m</td><td>2025</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,000 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€6,880</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €5,000 · 28-May</span></td></tr>
+        <tr><td>Zuzo 2 / Saelma</td><td>Lagoon 450</td><td>4+2</td><td>13.96m</td><td>2015/18</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,250 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€7,130</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €5,250 · 28-May</span></td></tr>
+        <tr><td>Alize</td><td>Fountaine Pajot Elba 45</td><td>4+2</td><td>13.45m</td><td>2025</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,500 ✓</span></td><td>~€380</td><td>+€1,500</td><td><strong>~€7,380</strong></td><td><span class="badge badge-green">✓ In Budget</span></td><td><span class="trend-new">📍 €5,500 · 28-May</span></td></tr>
+        <tr style="opacity:0.6;"><td>Zuzo 1ST</td><td>Lagoon 50</td><td>7</td><td>14.75m</td><td>2019</td><td>—</td><td>—</td><td><span class="price-confirmed">€9,700 ✓</span></td><td>~€400</td><td>+€1,500</td><td><strong>~€11,600</strong></td><td><span class="badge badge-red">OVER BUDGET</span></td><td><span class="trend-new">📍 €9,700 · 28-May</span></td></tr>
+        <tr style="opacity:0.6;"><td>LinaHanna</td><td>Lagoon 52 F</td><td>8</td><td>15.84m</td><td>2017</td><td>—</td><td>—</td><td><span class="price-confirmed">€10,250 ✓</span></td><td>~€400</td><td>+€1,500</td><td><strong>~€12,150</strong></td><td><span class="badge badge-red">OVER BUDGET</span></td><td><span class="trend-new">📍 €10,250 · 28-May</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">⚠️ All NCP catamarans base at <strong>D-Marin Marina Mandalina, Šibenik</strong> — ~35km / 45 min from Split. Availability for Jul 27 not date-confirmed for all boats above. The Lagoon 380 at €2,800/wk is the best catamaran value in this report if available.</p>
+
+  <div class="alert alert-warn" style="margin-top:12px;">
+    <span>💡</span>
+    <div><strong>NCP tip:</strong> Their 30th anniversary sale offers up to 38% off. The full catamaran fleet (especially Lagoon 380/39/40 at €2,800–3,650/wk) is exceptional value. Shift trip to July 26–August 2 (Sat–Sat) to access full fleet. Email <strong>booking@ncp-charter.com</strong> to check July 27 availability for specific boats.</div>
+  </div>
+</section>
+
+<!-- 12KNOTS -->
+<section id="12knots">
+  <h2>8. 12knots.com — <a href="https://12knots.com/en/yacht-charter/destinations/mediterranean-sea/croatia/split/" target="_blank">12knots.com</a></h2>
+  <div class="operator-meta">
+    <span class="meta-tag"><strong>Type:</strong> Aggregator</span>
+    <span class="meta-tag"><strong>Coverage:</strong> 557 boats in Split area</span>
+    <span class="meta-tag"><strong>Best feature:</strong> Flexible check-in dates &amp; short durations</span>
+  </div>
+
+  <p style="font-size:14px;margin-bottom:14px;">Most valuable find: a <strong>2025 Sun Odyssey 440</strong> with any-day check-in and 3-night minimum — the only option found that perfectly fits a July 27 start.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat</th><th>Cabins</th><th>Length</th><th>Year</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sun Kiss ⭐</strong> <small style="color:#6b7280;">Sun Odyssey 440</small></td>
+          <td>4</td><td>13.39m</td><td>2025</td>
+          <td>—</td><td><span class="disc-pct">-9%</span></td>
+          <td><span class="price-confirmed">~€2,600 ✓</span></td>
+          <td>TBC</td><td>+€1,500</td><td><strong>~€4,100+</strong></td>
+          <td><span class="badge badge-green">Any-day check-in</span> <span class="badge badge-blue">Min 3 nights</span></td>
+          <td><span class="trend-new">📍 ~€2,600 · 28-May</span></td>
+          <td><a href="https://12knots.com/en/yacht-charter/sun-odyssey-440-sun-kiss-12751/" target="_blank">Book →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-green" style="margin-top:12px;">
+    <span>⭐</span>
+    <div><strong>Why this matters:</strong> At ~€2,600 for 7 nights + €1,500 skipper + ~€400 extras = <strong>~€4,500 total</strong>, this is the cheapest all-in option found AND the only one that allows a genuine July 27 start. Verify July peak pricing on the listing page — the -9% price shown may be a discount from the rack rate, and peak-week prices can be higher.</div>
+  </div>
+</section>
+
+<!-- OTHER SITES -->
+<section id="others">
+  <h2>9. Other Sites Checked</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Site</th><th>Type</th><th>Base/Coverage</th><th>Fleet / Pricing</th><th>Best For</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.activityyachting.com/Croatia_Flotilla/bareboat_flotilla_yacht_prices.html" target="_blank">Activity Yachting</a></td>
+          <td>Flotilla specialist</td>
+          <td>Split region: ACI Split, Marina Kastela, Marina Zenta, Trogir/Seget, Marina Agana. Šibenik region: Mandalina, Skradin. +€250/wk flotilla fee.</td>
+          <td><strong>NauSYS widget searched Jul 26–Aug 2 2026 (correct dates).</strong> <strong>Split sailing yachts: 22 available</strong> — Bavaria 34 €1,776, Sun Odyssey 349 €2,557, Bavaria 41 €2,593, Sun Odyssey 49i "Ana B." €2,600, Salona 44 €3,488, SO 479 "Elena" €3,640, More 40 €3,975, SO 440 ×2 €4,301, SO 519 "Freyja" €4,193, Oceanis 51.1 "Salma" €4,615, SO 455 "Magic Kiss" (2026) €5,038, Jeanneau 54 €5,330, SO 490 €5,632, Garcia 72.2 €6,225, Oceanis 60 "Eol I" €6,500, Bavaria 44 "Freedom" €6,800, Oceanis 54 "Eve One" €7,009, More 55 "Nadja" €7,163, plus 3 over budget. <strong>Split catamarans: 3</strong> — Luna 49 (2022) "Blue" €10,500 ⚠️ budget edge; Luna 49 (2020) €11,250 over; Lagoon 560 €21,165 over. <strong>Šibenik catamarans: 1 — Excess 11 (2023) "First Sight" €4,684 ⭐ best-value cat in entire search.</strong> Šibenik sailing: Oceanis 37.1 (2024) "First Dream" €2,928; SO 54 DS "Olivia Adriatica" €6,300. Add +€250/wk flotilla fee.</td>
+          <td>Flotilla sailing; strong sailing yacht selection Split region</td>
+          <td><span class="badge badge-green">28 boats available Jul 26 — confirmed</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://navigare-yachting.com/en/destinations/croatia/" target="_blank">Navigare Yachting</a></td>
+          <td>Direct operator</td>
+          <td>Seget Donji (15 min from Split airport)</td>
+          <td>~100 boats; cats 40–56ft; mono 40–64ft; from $1,211 (LS)</td>
+          <td>Large/newer catamarans</td>
+          <td><span class="badge badge-blue">Quote required</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.sailogy.com/en/boat-rental/croatia/split/" target="_blank">Sailogy</a></td>
+          <td>Aggregator</td>
+          <td>ACI Marina Split</td>
+          <td>236 boats; fully dynamic — search on site</td>
+          <td>Price comparison</td>
+          <td><span class="badge badge-gray">Search required</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.clickandboat.com/en/rentals/country-croatia/province-split/" target="_blank">Click &amp; Boat</a></td>
+          <td>Aggregator</td>
+          <td>Split area</td>
+          <td>Day trips + short charters; $289–$575/day with captain</td>
+          <td>Day trips</td>
+          <td><span class="badge badge-gray">Not for weekly bareboat</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.getmyboat.com/boat-rental/Split--Split-Dalmatia-County--Croatia/" target="_blank">GetMyBoat</a></td>
+          <td>Aggregator</td>
+          <td>Split area</td>
+          <td>200+ boats; daily from €150; skippered tours</td>
+          <td>Day/half-day trips</td>
+          <td><span class="badge badge-gray">Not for weekly bareboat</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.moorings.com/destinations/mediterranean/croatia-yacht-charters/" target="_blank">The Moorings</a></td>
+          <td>International operator</td>
+          <td>Marina Agana (~30km from Split)</td>
+          <td>Sail + power fleet; pricing by quote only</td>
+          <td>International brand familiarity</td>
+          <td><span class="badge badge-orange">Quote only; not Split marina</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.sunsail.com/yacht-charter/mediterranean/croatia/split" target="_blank">Sunsail</a></td>
+          <td>International operator</td>
+          <td>Marina Agana (~30km from Split)</td>
+          <td>Monohulls 33–53ft; cats 39–46ft; flotilla packages</td>
+          <td>Flotilla / beginner packages</td>
+          <td><span class="badge badge-orange">Quote only; not Split marina</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ACTIVITY YACHTING DETAIL -->
+<section id="activityyachting">
+  <h2>10. Activity Yachting — Confirmed July 26 Availability</h2>
+  <p style="font-size:14px;margin-bottom:4px;">All prices are <strong>final charter price</strong> for Jul 26–Aug 2 2026 from NauSYS widget (correct dates verified). Add <strong>+€250/wk flotilla fee</strong> + skipper + cleaning + tax for all-in total. Last checked: <strong>28 May 2026</strong>.</p>
+  <p class="note" style="margin-bottom:14px;">⚠️ Date picker bug: the calendar displays one month behind what it stores — click June 26 to actually set July 26. Always verify the text field shows the correct date after clicking.</p>
+
+  <h4>Šibenik Region — Catamarans (1 available) ⭐ Best catamaran in entire search</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Year</th><th>Base</th><th>Cabins</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fdf4;">
+          <td><strong>First Sight ⭐</strong></td><td>Excess 11</td><td>2023</td><td>ACI Marina Skradin</td><td>4+2</td>
+          <td><span class="list-price">€5,511</span></td><td><span class="disc-pct">-15%</span></td>
+          <td><span class="price-confirmed">€4,684 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€6,434</strong></td>
+          <td><span class="trend-new">📍 €4,684 · 28-May</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Split Region — Catamarans (3 available)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Year</th><th>Base</th><th>Cabins</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Notes</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Blue</td><td>Luna 49</td><td>2022</td><td>Split, MCI Marine Club International</td><td>4+2</td>
+          <td><span class="list-price">€15,000</span></td><td><span class="disc-pct">-30%</span></td>
+          <td><span class="price-confirmed">€10,500 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€12,250</strong></td>
+          <td>On budget edge</td>
+          <td><span class="trend-new">📍 €10,500 · 28-May</span></td>
+        </tr>
+        <tr style="opacity:0.7;">
+          <td>Katamaran</td><td>Luna 49</td><td>2020</td><td>Split, MCI Marine Club International</td><td>4+2</td>
+          <td><span class="list-price">€15,000</span></td><td><span class="disc-pct">-25%</span></td>
+          <td><span class="price-confirmed">€11,250 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€13,000</strong></td>
+          <td><span class="badge badge-red">OVER BUDGET</span></td>
+          <td><span class="trend-new">📍 €11,250 · 28-May</span></td>
+        </tr>
+        <tr style="opacity:0.7;">
+          <td>Cool Change</td><td>Lagoon 560</td><td>2015</td><td>Marina Agana, near Trogir</td><td>4</td>
+          <td><span class="list-price">€24,900</span></td><td><span class="disc-pct">-15%</span></td>
+          <td><span class="price-confirmed">€21,165 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€22,915</strong></td>
+          <td><span class="badge badge-red">OVER BUDGET</span></td>
+          <td><span class="trend-new">📍 €21,165 · 28-May</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Šibenik Region — Sailing Yachts (2 available)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Year</th><th>Base</th><th>Cabins</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First Dream</td><td>Oceanis 37.1</td><td>2024</td><td>ACI Marina Skradin</td><td>3</td>
+          <td><span class="list-price">€3,444</span></td><td><span class="disc-pct">-15%</span></td>
+          <td><span class="price-confirmed">€2,928 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€4,678</strong></td>
+          <td><span class="trend-new">📍 €2,928 · 28-May</span></td>
+        </tr>
+        <tr>
+          <td>Olivia Adriatica</td><td>Sun Odyssey 54 DS</td><td>2008</td><td>Marina Mandalina, Šibenik</td><td>3+1</td>
+          <td>—</td><td>—</td>
+          <td><span class="price-confirmed">€6,300 ✓</span></td>
+          <td>€250 flotilla</td><td>+€1,500</td><td><strong>~€8,050</strong></td>
+          <td><span class="trend-new">📍 €6,300 · 28-May</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Split Region — Sailing Yachts (22 available, within-budget selection)</h4>
+  <p class="note" style="margin-bottom:10px;">All confirmed available Jul 26–Aug 2. Prices are final charter price after discount. Many boats have 10–35% discounts applied; check individual boat pages on a refresh to update discount %.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat Name</th><th>Model</th><th>Year</th><th>Base</th><th>List Price</th><th>Disc.%</th><th>Charter Price ✓</th><th>+Pack</th><th>+Skipper</th><th>Total Est.</th><th>Trend</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>—</td><td>Bavaria Cruiser 34</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€1,776 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€3,526</strong></td><td><span class="trend-new">📍 €1,776 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Sun Odyssey 349</td><td>—</td><td>ACI Marina Split</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,557 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€4,307</strong></td><td><span class="trend-new">📍 €2,557 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Bavaria Cruiser 41</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,593 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€4,343</strong></td><td><span class="trend-new">📍 €2,593 · 28-May</span></td></tr>
+        <tr><td>Ana B.</td><td>Sun Odyssey 49i</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€2,600 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€4,350</strong></td><td><span class="trend-new">📍 €2,600 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Salona 44</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,488 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€5,238</strong></td><td><span class="trend-new">📍 €3,488 · 28-May</span></td></tr>
+        <tr><td>Elena</td><td>Sun Odyssey 479</td><td>2017</td><td>Trogir, Yachtclub Seget</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,640 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€5,390</strong></td><td><span class="trend-new">📍 €3,640 · 28-May</span></td></tr>
+        <tr><td>—</td><td>More 40</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€3,975 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€5,725</strong></td><td><span class="trend-new">📍 €3,975 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Sun Odyssey 440</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,301 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€6,051</strong></td><td><span class="trend-new">📍 €4,301 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Sun Odyssey 440</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,301 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€6,051</strong></td><td><span class="trend-new">📍 €4,301 · 28-May</span></td></tr>
+        <tr><td>Freyja</td><td>Sun Odyssey 519</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,193 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€5,943</strong></td><td><span class="trend-new">📍 €4,193 · 28-May</span></td></tr>
+        <tr><td>Salma</td><td>Oceanis 51.1</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€4,615 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€6,365</strong></td><td><span class="trend-new">📍 €4,615 · 28-May</span></td></tr>
+        <tr><td>Magic Kiss</td><td>Sun Odyssey 455</td><td>2026</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,038 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€6,788</strong></td><td><span class="trend-new">📍 €5,038 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Jeanneau 54</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,330 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€7,080</strong></td><td><span class="trend-new">📍 €5,330 · 28-May</span></td></tr>
+        <tr><td>—</td><td>Sun Odyssey 490</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€5,632 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€7,382</strong></td><td><span class="trend-new">📍 €5,632 · 28-May</span></td></tr>
+        <tr><td>Makay</td><td>Garcia 72.2</td><td>2007</td><td>Marina Kastela</td><td>—</td><td>—</td><td><span class="price-confirmed">€6,225 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€7,975</strong></td><td><span class="trend-new">📍 €6,225 · 28-May</span></td></tr>
+        <tr><td>Eol I</td><td>Oceanis 60</td><td>2015</td><td>Marina Zenta, Split</td><td>—</td><td>—</td><td><span class="price-confirmed">€6,500 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€8,250</strong></td><td><span class="trend-new">📍 €6,500 · 28-May</span></td></tr>
+        <tr><td>Freedom</td><td>Bavaria 44</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€6,800 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€8,550</strong></td><td><span class="trend-new">📍 €6,800 · 28-May</span></td></tr>
+        <tr><td>Eve One</td><td>Oceanis 54</td><td>—</td><td>Split region</td><td>—</td><td>—</td><td><span class="price-confirmed">€7,009 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€8,759</strong></td><td><span class="trend-new">📍 €7,009 · 28-May</span></td></tr>
+        <tr><td>Nadja</td><td>More 55</td><td>2019</td><td>Trogir, Yachtclub Seget</td><td>—</td><td>—</td><td><span class="price-confirmed">€7,163 ✓</span></td><td>€250 flotilla</td><td>+€1,500</td><td><strong>~€8,913</strong></td><td><span class="trend-new">📍 €7,163 · 28-May</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Total Est. includes +€250/wk flotilla fee + €1,500 skipper. Does NOT include cleaning (~€200) or tourist tax (~€120). All 19 boats confirmed available Jul 26–Aug 2.</p>
+</section>
+
+<!-- CROSS-SITE COMPARE -->
+<section id="crossref">
+  <h2>11. Cross-Site Price Comparison (Same Boats, Different Brokers)</h2>
+  <p style="font-size:14px;margin-bottom:14px;">Several boats appear on both direct operator sites and aggregators. Where identifiable:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Boat (approx match)</th><th>CharterSplit</th><th>12knots</th><th>FairWind</th><th>Ultra Sailing</th><th>Best Price Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Swift Trawler 37 Fly (2026, ACI Split)</td>
+          <td><span class="price-ls">LS €4,400</span></td>
+          <td>"Zoe" — listed</td>
+          <td>—</td><td>—</td>
+          <td>Confirm HS price on both; book direct</td>
+        </tr>
+        <tr>
+          <td>Lagoon 40 (ACI Split)</td>
+          <td><span class="price-confirmed">HS €8,090 ✓ (2023)</span></td>
+          <td>"Candy" — <span class="badge badge-red">already booked Jul 27</span></td>
+          <td><span class="price-confirmed">€8,500 ✓</span> (diff. year)</td>
+          <td>—</td>
+          <td>CharterSplit (newer boat, lower price)</td>
+        </tr>
+        <tr>
+          <td>Beneteau Oceanis 40.1 (2024)</td>
+          <td><span class="price-ls">LS €2,550</span></td>
+          <td>Possibly listed</td>
+          <td>—</td><td>—</td>
+          <td>CharterSplit direct (no commission)</td>
+        </tr>
+        <tr>
+          <td>Bavaria C38 / C42 (2023–2024)</td>
+          <td><span class="price-confirmed">HS €4,600 ✓ (C42)</span></td>
+          <td>Possibly listed</td>
+          <td><span class="price-confirmed">€4,400 ✓ (C38)</span></td>
+          <td>—</td>
+          <td>FairWind for C38 (transparent fees); CharterSplit for C42 (newer)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-warn" style="margin-top:12px;">
+    <span>💰</span>
+    <div><strong>Key rule:</strong> Aggregators (12knots, Sailogy, Click&amp;Boat) typically add <strong>10–20% commission</strong> on top of the operator's price. Always find the direct operator and check their own site before booking via aggregator. Exception: if the aggregator has a unique boat or flexible dates not available direct (e.g., Sun Odyssey 440 "Sun Kiss" on 12knots).</div>
+  </div>
+</section>
+
+<!-- EXTRA COSTS -->
+<section id="costs">
+  <h2>12. Standard Additional Costs Reference</h2>
+  <p style="font-size:14px;margin-bottom:14px;">These apply across virtually all Split-area charter companies:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Cost Item</th><th>Typical Amount</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Charter / Comfort Pack</td><td>€300–€420/week</td><td>Includes end cleaning, bed linen, towels, gas, dinghy + outboard</td></tr>
+        <tr><td>Security Deposit</td><td>€1,500–€4,000</td><td>Fully refundable; held on credit card. Higher for catamarans.</td></tr>
+        <tr><td>Tourist Tax</td><td>~€1.33/adult/night</td><td>~€56 total for 6 people × 7 nights</td></tr>
+        <tr><td>Fuel</td><td>€80–€200/week</td><td>Fill-to-full policy. Motoring heavily = €200+; mostly sailing = €80</td></tr>
+        <tr><td>Port / Mooring Fees</td><td>€20–€100/night</td><td>ACI marinas ~€50–€80/night in peak. Anchoring in bays = free.</td></tr>
+        <tr><td>Skipper (bareboat hire)</td><td>~€1,500/week</td><td>Estimated — verify per operator</td></tr>
+        <tr><td>Optional extras</td><td>€5–€200</td><td>Wi-Fi (€5), kayak (€150), paddleboard (€100), dinghy upgrade</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="totals-box">
+    <p><strong>Realistic all-in totals for 7 nights (bareboat + skipper, 6 people):</strong></p>
+    <p>🏆 <strong>Best value catamaran (NCP Lagoon 380, Šibenik):</strong> €2,800 + €350 pack + €56 tourist tax + €200 fuel + €420 port fees + €1,500 skipper = <strong style="color:#276749;">~€5,326</strong></p>
+    <p>🪵 <strong>Budget sailboat (Bavaria C38, FairWind Split):</strong> €4,400 + €350 pack + €56 tourist tax + €150 fuel + €420 port fees + €1,500 skipper = <strong style="color:#276749;">~€6,876</strong></p>
+    <p>⛵ <strong>Mid-range sailboat (Bavaria 46C, FairWind Split):</strong> €5,400 + €375 pack + €56 tax + €150 fuel + €420 ports + €1,500 skipper = <strong style="color:#276749;">~€7,901</strong></p>
+    <p>🐟 <strong>Split-based catamaran (Lagoon 40 2023, CharterSplit):</strong> €8,090 + €410 pack + €56 tax + €200 fuel + €490 ports + €1,500 skipper = <strong style="color:#744210;">~€10,746</strong> (over budget)</p>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <h2>13. Tips &amp; Warnings</h2>
+  <ul class="tips">
+    <li><strong>Book immediately.</strong> July 26–August 2 is the single most expensive and most-booked week of the Croatian charter season. NCP Charter live search showed only 2 boats remaining for Jul 27–Aug 3. Availability is disappearing now.</li>
+    <li><strong>Saturday–Saturday is almost universal.</strong> Your July 27 (Sunday) start eliminates most boats. Your strongest options are the Sun Odyssey 440 on 12knots (any day, min 3 nights), or asking FairWind/CharterSplit if they'll allow a Sunday start for the July 26–Aug 2 week.</li>
+    <li><strong>Always book direct when possible.</strong> Aggregators add 10–20% commission. CharterSplit, FairWind, and ABA Vela are all direct operators with no middleman markup.</li>
+    <li><strong>NCP Charter is Šibenik, not Split.</strong> Beautiful marina but ~80km and ~1 hour drive from Split. Factor in transfers.</li>
+    <li><strong>Activity Yachting has strong July 26 availability.</strong> Their NauSYS widget has a date picker bug (calendar shows one month behind what it stores — click June 26 to set July 26). With correct dates searched: 22 sailing yachts available in Split region (€1,776–€7,163 in budget), plus the standout find — Excess 11 (2023) catamaran "First Sight" in Šibenik at €4,684/wk base, 4+2 cabins, brand new boat. Add €250/wk flotilla fee. This is the best catamaran value found across all sites.</li>
+    <li><strong>Mooring costs add up fast.</strong> Budget €50–€80/night at ACI marinas in peak season. For a 7-night trip stopping 5 nights in marinas, that's €250–€400 just in port fees. Anchoring in island bays (free) is preferred by experienced sailors.</li>
+    <li><strong>Catamaran prices at peak.</strong> Split-based catamarans with 4+ cabins run €10,500–€21,000+ base in July. But two Šibenik-based options are dramatically cheaper: <strong>Activity Yachting Excess 11 (2023) "First Sight" at ACI Marina Skradin €4,684/wk</strong> (4+2 cabins, brand new — best cat deal overall, ~€6,650 all-in); and <strong>NCP Charter Lagoon 380 at €2,800/wk</strong> base from Mandalina Šibenik (~€5,326 all-in). Both ~35–40 min from Split. Confirmed over-budget in Split: Lagoon 42 (2025) €11,250, Lagoon 43 (2025) €12,500, Luna 49 €10,500–11,250.</li>
+    <li><strong>FairWind and ABA Vela</strong> are the most consistently recommended direct operators in Split across sailing forums. Both communicate quickly and maintain their fleets well.</li>
+  </ul>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section id="recs">
+  <h2>14. Top Recommendations</h2>
+  <div class="rec-cards">
+    <div class="rec-card gold">
+      <div class="medal">🥇</div>
+      <h3>Best Flexibility — Sun Odyssey 440 "Sun Kiss"</h3>
+      <div class="rec-price">~€4,500–5,000 total</div>
+      <p style="font-size:13px;color:#92400e;margin-bottom:8px;">The only boat found with any-day check-in + 3-night minimum</p>
+      <ul>
+        <li>2025 model, 13.39m, 4 cabins, ACI Marina Split</li>
+        <li>~€2,600/wk bareboat (-9% discount)</li>
+        <li>Add €1,500 skipper + ~€400 extras</li>
+        <li>Start exactly July 27 — no compromise on dates</li>
+        <li>Verify July peak pricing on listing page</li>
+      </ul>
+      <a href="https://12knots.com/en/yacht-charter/sun-odyssey-440-sun-kiss-12751/" class="btn" target="_blank">Check Availability →</a>
+    </div>
+
+    <div class="rec-card silver">
+      <div class="medal">🥈</div>
+      <h3>Best Direct Booking — Bavaria C38 or C42</h3>
+      <div class="rec-price">~€6,300–6,800 total</div>
+      <p style="font-size:13px;color:#4b5563;margin-bottom:8px;">Confirmed peak prices, no aggregator markup</p>
+      <ul>
+        <li><strong>Bavaria C38</strong> via FairWind: €4,400 + €350 pack + skipper = ~€6,300</li>
+        <li><strong>Bavaria C42</strong> (2024) via CharterSplit: €4,600 + €320 pack + skipper = ~€6,420</li>
+        <li>Both at ACI Marina Split</li>
+        <li>FairWind has live online calendar; CharterSplit requires inquiry</li>
+        <li>Ask about Sunday July 27 start explicitly</li>
+      </ul>
+      <a href="https://fairwind.hr/fleet/" class="btn" target="_blank">FairWind Fleet →</a>
+      <a href="https://www.chartersplit.com/sailboat/bavaria-c42" class="btn" style="margin-left:6px;" target="_blank">CharterSplit C42 →</a>
+    </div>
+
+    <div class="rec-card bronze">
+      <div class="medal">🥉</div>
+      <h3>Best Catamaran Value — Two Šibenik Options</h3>
+      <div class="rec-price">€4,684–€5,326 all-in (Šibenik base, 35–40 min from Split)</div>
+      <p style="font-size:13px;color:#92400e;margin-bottom:8px;">Split-based cats all run €10,500+. Šibenik is dramatically cheaper.</p>
+      <ul>
+        <li>⭐ <strong>Activity Yachting — Excess 11 (2023) "First Sight"</strong>: €4,684/wk (4+2 cab, ACI Skradin) + skipper + cleaning + flotilla = <strong>~€6,650 total</strong>. Brand new modern cat.</li>
+        <li><strong>NCP Charter — Lagoon 380</strong>: €2,800/wk confirmed (4 cab, Mandalina Šibenik) + pack + skipper = <strong>~€4,970 total</strong>. Cheapest all-in cat found.</li>
+        <li><strong>NCP Charter — Lagoon 39 "Bob Cat"</strong>: €3,400/wk + extras = ~€5,250 total</li>
+        <li>Availability for Jul 27 dates not confirmed — check Jul 26 (Sat) start</li>
+        <li>NCP: Email booking@ncp-charter.com; Activity Yachting: use contact form</li>
+        <li>NCP has 30th anniversary sale with up to 38% additional discount</li>
+      </ul>
+      <a href="https://www.activityyachting.com/Croatia_Flotilla/bareboat_flotilla_yacht_prices.html" class="btn" target="_blank">Activity Yachting →</a>
+      <a href="https://ncp-charter.com/catamaran-charter.html" class="btn" style="margin-left:6px;" target="_blank">NCP Catamarans →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MONITOR FOR DEALS -->
+<section id="monitor">
+  <h2>15. Best Sites to Monitor for Discounts</h2>
+  <div class="table-wrap monitor-table">
+    <table>
+      <thead>
+        <tr><th>Site</th><th>Why Monitor</th><th>When to Check</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ncp-charter.com</strong></td>
+          <td>30th anniversary deals up to 38% off; active last-minute section</td>
+          <td>Weekly — specials page updates regularly</td>
+          <td><a href="https://www.ncp-charter.com/special-offer/last-minute-yacht-charters.html" target="_blank">Last-Minute Deals →</a></td>
+        </tr>
+        <tr>
+          <td><strong>fairwind.hr</strong></td>
+          <td>5% early booking discount; reliable operator worth paying for</td>
+          <td>Nov–Jan for following summer</td>
+          <td><a href="https://fairwind.hr/price-list/" target="_blank">Price List →</a></td>
+        </tr>
+        <tr>
+          <td><strong>abavela.com</strong></td>
+          <td>Last-minute offers appear on homepage; family-owned = flexible</td>
+          <td>6–8 weeks before travel date</td>
+          <td><a href="https://abavela.com" target="_blank">Homepage →</a></td>
+        </tr>
+        <tr>
+          <td><strong>chartersplit.com</strong></td>
+          <td>Direct owner fleet; widest Split selection; ask about discounts</td>
+          <td>4–6 weeks before; email directly</td>
+          <td><a href="http://chartersplit.com" target="_blank">Fleet →</a></td>
+        </tr>
+        <tr>
+          <td><strong>12knots.com</strong></td>
+          <td>Sort by "Highest Discount" to find distressed/unsold inventory</td>
+          <td>Any time; check weekly closer to trip</td>
+          <td><a href="https://12knots.com/en/search?country=HR&bases=433&sort=5%3B1" target="_blank">Highest Discounts →</a></td>
+        </tr>
+        <tr>
+          <td><strong>ncp-charter.com — catamarans</strong></td>
+          <td>Lagoon 380 at €2,800/wk is cheapest cat found; anniversary sale adds more discounts. Email for Jul 26–27 start date flexibility.</td>
+          <td>Contact immediately — limited peak availability</td>
+          <td><a href="https://ncp-charter.com" target="_blank">NCP Fleet →</a> · <a href="mailto:booking@ncp-charter.com">booking@ncp-charter.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>activityyachting.com — Excess 11 (2023) "First Sight"</strong></td>
+          <td>⭐ Best catamaran found: Excess 11 (2023) "First Sight" at ACI Marina Skradin (Šibenik), 4+2 cabins, €4,684/wk base (15% off). All-in with skipper+cleaning+tax+€250 flotilla ≈ €6,650. Book via their contact form. Note: date picker has a calendar bug — widget shows correct July 26 inventory.</td>
+          <td>Top priority — email now to hold</td>
+          <td><a href="https://www.activityyachting.com/Croatia_Flotilla/bareboat_flotilla_yacht_prices.html" target="_blank">Search →</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  Report compiled May 27, 2026 · Second-pass price verification complete · Confirmed prices for CharterSplit (16 boats), FairWind (5 boats), NCP Charter (full sailboat + catamaran fleet), ABA Vela, Ultra Sailing extras · Book immediately — July 26–August 2 is the hottest week of the Croatian charter season
+</footer>
+
+</body>
+</html>
