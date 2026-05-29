@@ -19,7 +19,7 @@
   .alert-green { background: #f0fdf4; border-left: 4px solid #22c55e; }
   .alert strong { display: block; margin-bottom: 2px; }
 
-  nav { background: #1a202c; padding: 0 32px; display: flex; gap: 4px; flex-wrap: wrap; }
+  nav { background: #1a202c; padding: 0 32px; display: flex; gap: 4px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
   nav a { color: #a0aec0; text-decoration: none; font-size: 13px; padding: 12px 14px; border-bottom: 3px solid transparent; white-space: nowrap; }
   nav a:hover { color: white; border-bottom-color: #4299e1; }
 
@@ -93,6 +93,19 @@
   .section-note { font-size: 13px; background: #fffbeb; border: 1px solid #f6e05e; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; color: #744210; }
 
   .bestdeal-table td:nth-child(5) { color: #276749; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .content { padding: 16px; }
+  .header { padding: 24px 16px; }
+  .header h1 { font-size: 20px; }
+  nav { padding: 0 12px; gap: 2px; }
+  nav a { font-size: 11px; padding: 8px 8px; }
+  section { padding: 16px; }
+  .rec-cards { grid-template-columns: 1fr; }
+  /* Hide low-value columns on mobile */
+  .col-trend { display: none !important; }
+  .col-pack { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -138,6 +151,75 @@
 </nav>
 
 <div class="content">
+
+<section id="filter-bar" style="padding:16px 20px;margin-bottom:20px;background:white;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+    <strong style="font-size:14px;color:#0a3d62;">&#128269; Filter Summary Table:</strong>
+    <label style="font-size:13px;">Type:
+      <select id="filter-type" style="margin-left:4px;padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px;">
+        <option value="">All</option>
+        <option value="Sailboat">Sailboat</option>
+        <option value="Catamaran">Catamaran</option>
+      </select>
+    </label>
+    <label style="font-size:13px;">Max Total Est.:
+      <select id="filter-budget" style="margin-left:4px;padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px;">
+        <option value="">Any</option>
+        <option value="5000">&le; &euro;5,000</option>
+        <option value="6000">&le; &euro;6,000</option>
+        <option value="7000">&le; &euro;7,000</option>
+        <option value="8000">&le; &euro;8,000</option>
+        <option value="10000">&le; &euro;10,000</option>
+      </select>
+    </label>
+    <label style="font-size:13px;">Min Cabins:
+      <select id="filter-cabins" style="margin-left:4px;padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px;">
+        <option value="">Any</option>
+        <option value="3">3+</option>
+        <option value="4">4+</option>
+      </select>
+    </label>
+    <button onclick="clearFilters()" style="padding:4px 12px;background:#e2e8f0;border:none;border-radius:4px;font-size:13px;cursor:pointer;">Clear</button>
+    <span id="filter-count" style="font-size:12px;color:#718096;"></span>
+  </div>
+</section>
+<script>
+function applyFilters() {
+  var type = document.getElementById('filter-type').value;
+  var budget = parseInt(document.getElementById('filter-budget').value) || Infinity;
+  var cabins = parseInt(document.getElementById('filter-cabins').value) || 0;
+  var summaryTable = document.querySelector('#summary table tbody');
+  if (!summaryTable) return;
+  var rows = summaryTable.querySelectorAll('tr');
+  var shown = 0;
+  rows.forEach(function(row) {
+    var cells = row.querySelectorAll('td');
+    if (cells.length < 6) { row.style.display = ''; return; }
+    var rowType = cells[2] ? cells[2].textContent.trim() : '';
+    var rowCabins = cells[3] ? cells[3].textContent.trim() : '';
+    var rowTotal = cells[5] ? cells[5].textContent.replace(/[^0-9]/g,'') : '0';
+    var cabinNum = parseInt(rowCabins) || 0;
+    var totalNum = parseInt(rowTotal) || 0;
+    var show = true;
+    if (type && rowType !== type) show = false;
+    if (cabins && cabinNum < cabins) show = false;
+    if (budget < Infinity && totalNum > budget) show = false;
+    row.style.display = show ? '' : 'none';
+    if (show) shown++;
+  });
+  document.getElementById('filter-count').textContent = shown + ' boats shown';
+}
+function clearFilters() {
+  document.getElementById('filter-type').value = '';
+  document.getElementById('filter-budget').value = '';
+  document.getElementById('filter-cabins').value = '';
+  applyFilters();
+  document.getElementById('filter-count').textContent = '';
+}
+['filter-type','filter-budget','filter-cabins'].forEach(function(id) {
+  document.getElementById(id).addEventListener('change', applyFilters);
+});
+</script>
 
 <!-- SUMMARY -->
 <section id="summary">
@@ -417,13 +499,13 @@
       </thead>
       <tbody>
         <tr><td>Sjor III</td><td>Grand Soleil 40</td><td>3</td><td>11.99m</td><td>2003</td><td><span class="price-confirmed">&euro;2,000 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;3,850</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,000 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Skalice</td><td>Grand Soleil 43</td><td>3</td><td>13.39m</td><td>2005</td><td><span class="price-confirmed">&euro;2,250 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,100</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,250 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+46-Grand+Soleil+46-Yacht_p_yachtId-13781380857300091.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Sportski Vuk</td><td>Grand Soleil 37 R</td><td>3</td><td>11.70m</td><td>2010</td><td><span class="price-confirmed">&euro;2,350 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,200</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,350 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Pingala</td><td>Grand Soleil 45</td><td>3</td><td>13.90m</td><td>2005</td><td><span class="price-confirmed">&euro;2,600 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,450</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,600 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Kety</td><td>Grand Soleil 50</td><td>4</td><td>14.90m</td><td>2005</td><td><span class="price-confirmed">&euro;3,200 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;5,050</strong></td><td></td><td><span class="trend-new">&#128205; &euro;3,200 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Aloha / Sportski Vuk 44</td><td>Grand Soleil 44</td><td>3</td><td>13.40m</td><td>2022/23</td><td><span class="price-confirmed">&euro;4,150 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;6,000</strong></td><td></td><td><span class="trend-new">&#128205; &euro;4,150 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Vita</td><td>Dufour 530 GL</td><td>4</td><td>16.35m</td><td>2021</td><td><span class="price-confirmed">&euro;4,800 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;6,650</strong></td><td></td><td><span class="trend-new">&#128205; &euro;4,800 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Grand+Soleil+40-MAYA-Yacht_p_yachtId-13781380857300090.html" target="_blank">View &rarr;</a></td></tr>
-        <tr><td>Morea</td><td>Grand Soleil 52 LC</td><td>3+skipper</td><td>16.98m</td><td>2024</td><td><span class="price-confirmed">&euro;7,200 &check;</span></td><td>~&euro;380</td><td>+&euro;1,500</td><td><strong>~&euro;9,080</strong></td><td></td><td><span class="trend-new">&#128205; &euro;7,200 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/yacht-details/Hanse+548-Hanse+548-Yacht_p_yachtId-13781380857300092.html" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Skalice</td><td>Grand Soleil 43</td><td>3</td><td>13.39m</td><td>2005</td><td><span class="price-confirmed">&euro;2,250 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,100</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,250 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Sportski Vuk</td><td>Grand Soleil 37 R</td><td>3</td><td>11.70m</td><td>2010</td><td><span class="price-confirmed">&euro;2,350 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,200</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,350 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Pingala</td><td>Grand Soleil 45</td><td>3</td><td>13.90m</td><td>2005</td><td><span class="price-confirmed">&euro;2,600 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;4,450</strong></td><td></td><td><span class="trend-new">&#128205; &euro;2,600 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Kety</td><td>Grand Soleil 50</td><td>4</td><td>14.90m</td><td>2005</td><td><span class="price-confirmed">&euro;3,200 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;5,050</strong></td><td></td><td><span class="trend-new">&#128205; &euro;3,200 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Aloha / Sportski Vuk 44</td><td>Grand Soleil 44</td><td>3</td><td>13.40m</td><td>2022/23</td><td><span class="price-confirmed">&euro;4,150 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;6,000</strong></td><td></td><td><span class="trend-new">&#128205; &euro;4,150 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Vita</td><td>Dufour 530 GL</td><td>4</td><td>16.35m</td><td>2021</td><td><span class="price-confirmed">&euro;4,800 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;6,650</strong></td><td></td><td><span class="trend-new">&#128205; &euro;4,800 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
+        <tr><td>Morea</td><td>Grand Soleil 52 LC</td><td>3+skipper</td><td>16.98m</td><td>2024</td><td><span class="price-confirmed">&euro;7,200 &check;</span></td><td>~&euro;380</td><td>+&euro;1,500</td><td><strong>~&euro;9,080</strong></td><td></td><td><span class="trend-new">&#128205; &euro;7,200 &middot; 28-May</span></td><td><a href="https://www.ncp-charter.com/en/fleet/sailboats/" target="_blank">View &rarr;</a></td></tr>
         <tr><td><em>Various Dufour, Hanse, Elan, Oceanis</em></td><td>Multiple</td><td>3&ndash;4</td><td>11&ndash;14m</td><td>2018&ndash;2024</td><td><span class="price-confirmed">&euro;1,440&ndash;&euro;4,300 &check;</span></td><td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;3,290&ndash;&euro;6,150</strong></td><td></td><td><span class="trend-new">&#128205; &euro;1,440&ndash;4,300 &middot; 28-May</span></td><td><a href="https://ncp-charter.com" target="_blank">Browse &rarr;</a></td></tr>
       </tbody>
     </table>
@@ -451,6 +533,11 @@
     </table>
   </div>
   <p class="note">&#9888;&#65039; All NCP catamarans base at <strong>D-Marin Marina Mandalina, Šibenik</strong> &mdash; ~35km / 45 min from Split. Availability for Jul 27 not date-confirmed for all boats above. The Lagoon 380 at &euro;2,800/wk is the best catamaran value in this report if available.</p>
+
+  <div class="alert alert-warn" style="margin-top:8px;">
+    <span>&#9888;&#65039;</span>
+    <div><strong>Price note:</strong> The "Full Fleet" tables above show NCP's published peak-season base rates (valid for any Sat&ndash;Sat week in high season). However, a live search for the specific Jul 27&ndash;Aug 3 week found <strong>only 3 boats still available</strong> at those dates &mdash; the Oceanis 45.1 (&euro;5,400), NEW 2026 boat (&euro;7,565), and Dufour 48 (&euro;8,600). The remaining fleet is likely already booked for that exact week. Shift to <strong>Jul 26&ndash;Aug 2 (Sat&ndash;Sat)</strong> to access the full fleet.</div>
+  </div>
 
   <div class="alert alert-warn" style="margin-top:12px;">
     <span>&#128161;</span>
@@ -497,7 +584,7 @@
           <td><span class="price-confirmed">&euro;2,800 &check;</span></td>
           <td>~&euro;300</td><td>+&euro;1,500</td><td><strong>~&euro;4,600</strong></td><td></td>
           <td><span class="trend-new">&#128205; &euro;2,800 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-sailboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Bavaria Cruiser 37</td><td>3</td><td>11.27m</td><td>2020</td>
@@ -525,7 +612,7 @@
           <td><span class="price-confirmed">&euro;3,550 &check;</span></td>
           <td>~&euro;310</td><td>+&euro;1,500</td><td><strong>~&euro;5,360</strong></td><td></td>
           <td><span class="trend-new">&#128205; &euro;3,550 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-sailboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Elan 40 Impression (Wed&ndash;Wed)</td><td>3</td><td>11.9m</td><td>2019</td>
@@ -546,7 +633,7 @@
           <td><span class="price-confirmed">&euro;4,600 &check;</span></td>
           <td>~&euro;320</td><td>+&euro;1,500</td><td><strong>~&euro;6,420</strong></td><td></td>
           <td><span class="trend-new">&#128205; &euro;4,600 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-sailboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Bavaria C42</td><td>3</td><td>12.4m</td><td>2024</td>
@@ -560,7 +647,7 @@
           <td><span class="price-confirmed">&euro;4,700 &check;</span></td>
           <td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;6,550</strong></td><td><a href="#sailo">Also at Sailo</a> for &euro;3,016 (2019) or &euro;4,347 (2025)</td>
           <td><span class="trend-new">&#128205; &euro;4,700 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-sailboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Beneteau Oceanis 40.1</td><td>4</td><td>11.99m</td><td>2024</td>
@@ -574,7 +661,7 @@
           <td><span class="price-confirmed">&euro;5,200 &check;</span></td>
           <td>~&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;7,050</strong></td><td></td>
           <td><span class="trend-new">&#128205; &euro;5,200 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-sailboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Jeanneau Sun Odyssey 490</td><td>5+1</td><td>14.42m</td><td>2025</td>
@@ -686,13 +773,13 @@
           <td>Grandezza 28 OC</td><td>1</td><td>8.50m</td><td>2021</td>
           <td><span class="price-confirmed">&euro;2,800 &check;</span></td><td>TBC</td><td>+&euro;1,500</td><td>TBC</td><td></td>
           <td><span class="trend-new">&#128205; &euro;2,800 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-motorboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Bavaria E40</td><td>2</td><td>11.97m</td><td>2019</td>
           <td><span class="price-confirmed">&euro;4,100 &check;</span></td><td>TBC</td><td>+&euro;1,500</td><td>TBC</td><td></td>
           <td><span class="trend-new">&#128205; &euro;4,100 &middot; 28-May</span></td>
-          <td><a href="https://www.chartersplit.com" target="_blank">Inquire &rarr;</a></td>
+          <td><a href="https://www.chartersplit.com/charter-split-motorboats/" target="_blank">Inquire &rarr;</a></td>
         </tr>
         <tr>
           <td>Jeanneau Merry Fisher 1095</td><td>3</td><td>10.50m</td><td>2025</td>
@@ -764,7 +851,7 @@
           <td>Sestrica Vela</td><td>Bavaria C46 Style</td><td>4</td><td>2025</td>
           <td><span class="price-confirmed">&euro;3,380 &check;</span></td>
           <td>&euro;350</td><td>+&euro;1,500</td><td><strong>~&euro;5,230</strong></td>
-          <td>Jul 11&ndash;18 rate confirmed; <a href="#chartersplit">Also at CharterSplit</a> as Bavaria C42 &euro;4,600</td>
+          <td>Jul 11&ndash;18 rate confirmed; <a href="#chartersplit">CharterSplit has similar Bavaria C42</a> &euro;4,600 (different model)</td>
           <td><span class="trend-new">&#128205; &euro;3,380 &middot; 28-May</span></td>
           <td><a href="https://abavela.com/en/charter-sailing-yacht-bavaria-c46-style.html" target="_blank">View &rarr;</a></td>
         </tr>
@@ -957,6 +1044,12 @@
 <!-- ACTIVITY YACHTING -->
 <section id="activityyachting">
   <h2>&sect;8. Activity Yachting &mdash; Confirmed July 26 Availability</h2>
+
+  <div class="alert alert-info" style="margin-bottom:16px;">
+    <span>&#128279;</span>
+    <div><strong>No individual boat pages:</strong> Activity Yachting uses a NauSYS search widget &mdash; there are no individual boat listing URLs. All links in this section go to the same search page. To find a specific boat, use the widget with the correct dates (see the calendar bug note in Tips &sect;14) and search by region. Email them directly for boat-specific inquiries.</div>
+  </div>
+
   <p style="font-size:14px;margin-bottom:4px;">All prices are <strong>final charter price</strong> for Jul 26&ndash;Aug 2 2026 from NauSYS widget (correct dates verified). Add <strong>+&euro;250/wk flotilla fee</strong> + skipper + cleaning + tax for all-in total. Last checked: <strong>28 May 2026</strong>.</p>
   <p class="note" style="margin-bottom:14px;">&#9888;&#65039; Date picker bug: the calendar displays one month behind what it stores &mdash; click June 26 to actually set July 26. Always verify the text field shows the correct date after clicking.</p>
 
@@ -1711,8 +1804,84 @@
 </div><!-- .content -->
 
 <footer>
-  Report compiled May 28, 2026 &middot; Restructured with reordered sections, prices sorted low&rarr;high, direct links, Best Deal by Model table, and duplicate cross-referencing &middot; Confirmed prices for CharterSplit (16 boats), FairWind (5 boats), NCP Charter (full fleet), ABA Vela, Ultra Sailing extras &middot; Book immediately &mdash; July 26&ndash;August 2 is the hottest week of the Croatian charter season
+  Report compiled May 28, 2026 &middot; Updated with bug fixes, sticky nav, collapsible sections, column filter, and mobile layout &middot; Confirmed prices for CharterSplit (16 boats), FairWind (5 boats), NCP Charter (full fleet), ABA Vela, Ultra Sailing extras &middot; Book immediately &mdash; July 26&ndash;August 2 is the hottest week of the Croatian charter season
 </footer>
+
+<script>
+(function() {
+  // A: Hide Trend column in all tables
+  // B: Hide +Skipper column in all tables
+  // C: Merge List Price + Disc.% columns
+  document.querySelectorAll('table').forEach(function(table) {
+    var ths = Array.from(table.querySelectorAll('thead th'));
+    var toHide = [];
+    var listPriceIdx = -1;
+    var discIdx = -1;
+
+    ths.forEach(function(th, i) {
+      var text = th.textContent.trim();
+      if (text === 'Trend') toHide.push(i);
+      if (text === '+Skipper') toHide.push(i);
+      if (text === 'List Price') listPriceIdx = i;
+      if (text === 'Disc.%') discIdx = i;
+    });
+
+    // C: Merge List Price + Disc.% if both present
+    if (listPriceIdx >= 0 && discIdx >= 0) {
+      ths[listPriceIdx].textContent = 'List → Disc.';
+      toHide.push(discIdx);
+      table.querySelectorAll('tbody tr').forEach(function(row) {
+        var cells = row.querySelectorAll('td');
+        if (cells[listPriceIdx] && cells[discIdx]) {
+          cells[listPriceIdx].innerHTML = cells[listPriceIdx].innerHTML + ' ' + cells[discIdx].innerHTML;
+        }
+      });
+    }
+
+    // Apply hiding
+    toHide.forEach(function(idx) {
+      ths[idx].style.display = 'none';
+      table.querySelectorAll('tbody tr, tfoot tr').forEach(function(row) {
+        var cells = row.querySelectorAll('td, th');
+        if (cells[idx]) cells[idx].style.display = 'none';
+      });
+    });
+  });
+
+  // B extra: Add per-section skipper note banners
+  // Add a single skipper note after the main alerts block instead of per-section
+  // (the existing alert in .alerts already says "add ~€1,500/week" — no extra banner needed)
+})();
+</script>
+
+<script>
+(function() {
+  // Make sections §3-§10 collapsible (click heading to toggle)
+  var collapsible = ['ncp','chartersplit','abavela','fairwind','ultrasailing','activityyachting','sailo','12knots'];
+  collapsible.forEach(function(id) {
+    var section = document.getElementById(id);
+    if (!section) return;
+    var h2 = section.querySelector('h2');
+    if (!h2) return;
+    var children = Array.from(section.children).filter(function(c) { return c !== h2; });
+
+    // Add toggle indicator
+    var indicator = document.createElement('span');
+    indicator.textContent = ' ▲';
+    indicator.style.cssText = 'font-size:14px;color:#4299e1;margin-left:8px;cursor:pointer;';
+    h2.appendChild(indicator);
+    h2.style.cursor = 'pointer';
+    h2.title = 'Click to collapse/expand';
+
+    var open = true;
+    h2.addEventListener('click', function() {
+      open = !open;
+      children.forEach(function(c) { c.style.display = open ? '' : 'none'; });
+      indicator.textContent = open ? ' ▲' : ' ▼';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
